@@ -1,8 +1,4 @@
 # Functor
-
-
-## Description
-
 > Modifications on boxed values
 > Functor - box with value, that used in fmap function
 
@@ -36,9 +32,8 @@ fmap id (Just 3) = Just 3
 fmap (f . g) (Just x) = Just (f (g x))
 ```
 
-# Applicative functor
 
-## Description
+# Applicative functor
 
 > Same function, but with function[s] as value
 
