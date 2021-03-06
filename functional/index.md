@@ -1,3 +1,8 @@
+##### Table of Contents
+[Functor](#functor)
+[Applicative Functor](#applicative-functor)
+[Monoid](#monoid)
+
 # Functor
 > Modifications on boxed values
 > Functor - box with value, that used in fmap function
@@ -32,9 +37,7 @@ fmap id (Just 3) = Just 3
 fmap (f . g) (Just x) = Just (f (g x))
 ```
 
-
-# Applicative functor
-
+# Applicative Functor
 > Same function, but with function[s] as value
 
 ## Interface
