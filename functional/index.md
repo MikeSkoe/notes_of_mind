@@ -1,7 +1,8 @@
 ##### Table of Contents
-[Functor](#functor)
-[Applicative Functor](#applicative-functor)
-[Monoid](#monoid)
+[Functor](#functor)<br>
+[Applicative Functor](#applicative-functor)<br>
+[Monoid](#monoid)<br>
+[Monad](#monad)<br>
 
 # Functor
 > Modifications on boxed values
@@ -13,7 +14,6 @@
 class Functor f where
     fmap :: (a -> b) -> f a -> f b
 ```
-
 
 ## Example implementation
 
@@ -106,4 +106,41 @@ instance Monoid [a] where
 
 mconcat [[1,2],[3,6],[9]]
 -- [1,2,3,6,9]
+```
+
+# Monad
+
+## Interface
+```haskell
+class Monad m where
+    return :: a -> m a
+  
+    (>>=) :: m a -> (a -> m b) -> m b
+  
+    (>>) :: m a -> m b -> m b
+    x >> y = x >>= \_ -> y
+  
+    fail :: String -> m a
+    fail msg = error msg
+```
+
+## Example Implementation
+```haskell
+instance Monad Maybe where  
+    return x = Just x
+    Nothing >>= f = Nothing
+    Just x >>= f  = f x
+    fail _ = Nothing
+```
+
+## Example Usage
+```haskell
+return "WHAT" :: Maybe String
+-- Just "WHAT"
+
+Just 9 >>= \x -> return (x*10)
+-- Just 90
+
+Nothing >>= \x -> return (x*10)
+-- Nothing
 ```
